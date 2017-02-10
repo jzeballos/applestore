@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-app="apple" ng-controller="MacController">
+		<h1>{{title}}</h1>
+
+		<h3>Featured Product</h3>
+		<div>
+			<div>Name: {{featureProduct.name}}</div>
+			<div>Price: {{featureProduct.price | number:2}}</div>
+		</div>
+		<div>Add New Product</div>
+		<form>
+			<label for="productname">Product Name</label>
+			<input type="text" 
+				name="productname" 
+				placeholder="Product Name"
+				ng-model="myInputName"
+			>
+			<input type="text" 
+				name="productprice" 
+				placeholder="Product Price"
+				ng-model="myInputPrice"
+			>
+			<button ng-click="doSubmit()">submit</button>
+		</form>
+
+		<h3>Other Products</h3>
+		<div ng-repeat="product in products">
+			{{product.name}}
+			{{product.price}}
+		</div>
+
+	</div>
+
+	<div ng-app="ms">
+
+	</div>
+
+	<!-- libraries -->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/angular/angular.js"></script>
+	
+	<!-- application files (order matters) -->
+	<script src="app.js"></script> 
+
+</body>
+</html>
