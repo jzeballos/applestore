@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="UTF-8">
 	<title>Document</title>
+
 </head>
 <body>
 	<div ng-app="apple" ng-controller="MacController">
@@ -16,13 +18,13 @@
 		<div>Add New Product</div>
 		<form>
 			<label for="productname">Product Name</label>
-			<input type="text" 
-				name="productname" 
+			<input type="text"
+				name="productname"
 				placeholder="Product Name"
 				ng-model="myInputName"
 			>
-			<input type="text" 
-				name="productprice" 
+			<input type="text"
+				name="productprice"
 				placeholder="Product Price"
 				ng-model="myInputPrice"
 			>
@@ -30,10 +32,23 @@
 		</form>
 
 		<h3>Other Products</h3>
-		<div ng-repeat="product in products">
-			{{product.name}}
-			{{product.price}}
-		</div>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Featured</th>
+			</tr>
+
+		<!-- <div > -->
+			<tr ng-repeat="product in products">
+				<td>{{product.name}}</td>
+				<td>{{product.price | currency : $ : 0}}</td>
+				<td><input type="checkbox" ng-model="product.featured" ng-click="selectFeatured($index)"></td>
+			</tr>
+		<!-- </div> -->
+		</table>
+
+
 
 	</div>
 
@@ -42,11 +57,13 @@
 	</div>
 
 	<!-- libraries -->
-	<script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/angular/angular.js"></script>
-	
+	<!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
+	<!-- <script src="node_modules/angular/angular.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
 	<!-- application files (order matters) -->
-	<script src="app.js"></script> 
+	<script src="app.js"></script>
 
 </body>
 </html>
